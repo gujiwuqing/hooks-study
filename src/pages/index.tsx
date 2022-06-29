@@ -1,15 +1,12 @@
-import yayJpg from '../assets/yay.jpg';
+import React, {useState} from 'react';
+import {useInterval} from '../hooks/useInterval';
 
-export default function HomePage() {
-  return (
-    <div>
-      <h2>Yay! Welcome to umi!</h2>
-      <p>
-        <img src={yayJpg} width="388" />
-      </p>
-      <p>
-        To get started, edit <code>pages/index.tsx</code> and save to reload.
-      </p>
-    </div>
-  );
-}
+export default () => {
+  const [count, setCount] = useState(0);
+
+  // useInterval(() => {
+  //   setCount(count + 1);
+  // }, 1000);
+
+  return <div>count: {count}</div>;
+};
