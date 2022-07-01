@@ -1,17 +1,22 @@
 import React, {useState} from 'react';
-import {useInterval} from '../hooks/useInterval';
-
+import useSetState from '../hooks/useSetState';
 export default () => {
-    const [count, setCount] = useState(0);
-
-    const clear = useInterval(() => {
-        setCount(count + 1);
-    }, 1000, {
-        immediate: true
+    const [state, setState] = useSetState({
+        name: 'test',
+        age: 18
     });
 
-    return <div>
-        <div>count: {count}</div>
-        <button onClick={clear}>clear</button>
-    </div>;
+
+    return (
+        <div>
+            <div>name: {state.name}</div>
+            <div>age: {state.age}</div>
+            <button type="button" onClick={() => setState((prev) => ({ age: prev.age + 1 }))}>
+                count + 1
+            </button>
+            <button type="button" onClick={() =>setState({name:'zsas'})}>
+                count + 1
+            </button>
+        </div>
+    );
 };
